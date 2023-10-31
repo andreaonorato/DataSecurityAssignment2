@@ -1,6 +1,26 @@
 ## Getting Started
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## About
+This is a code is an implementation for token based authentcation mechanism after which RMI(remote method invocation) based invocation of printing service is done
+
+Followinf are the steps to run this project in local environment
+
+## Step 1
+install latest version of jdk
+
+## Step 2
+install Mysql workbench and database and add user: "root" and password: "94NkIBdasNKtyO0"
+
+## Step 3
+Run CreateUser.java class file to add user to the database (please change the username each time you run this file in function main() as username is assued to be unique for each user )
+
+## Step 4
+Run PrintServer.java file to boot print server
+Run AuthServer.java file to boot authentication server
+Finally run Client.java file
+
+# NOTE:
+Results of All the operations invoked of the client are printed on console of respective server which is running 
 
 ## Folder Structure
 

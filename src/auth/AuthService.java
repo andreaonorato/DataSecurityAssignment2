@@ -23,7 +23,7 @@ public class AuthService extends UnicastRemoteObject implements AuthServiceI {
             Connection connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/printer_users_db", "root", "94NkIBdasNKtyO0");
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from users where password ='" + password + "'");
+            ResultSet resultSet = statement.executeQuery("select * from users where password ='" + username + "'");
 
             while (resultSet.next()) {
                     long currentTimeInMilisecond = Instant.now().plus(5, ChronoUnit.MINUTES).toEpochMilli();
