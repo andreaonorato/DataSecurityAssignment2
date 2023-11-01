@@ -54,7 +54,7 @@ public class Client {
         if (isSuccess) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----your token expired please authenticate again-----\n");
+          System.out.println("----Operation could not be executed please authenticate-----\n");
           inputToken = getToken(sc);
         }
         break;
@@ -63,7 +63,7 @@ public class Client {
         if (isSuccess) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----your token expired please authenticate again-----\n");
+          System.out.println("----Operation could not be executed please authenticate-----\n");
           inputToken = getToken(sc);
         }
         break;
@@ -72,7 +72,7 @@ public class Client {
         if (isSuccess) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----your token expired please authenticate again-----\n");
+         System.out.println("----Operation could not be executed please authenticate-----\n");
           inputToken = getToken(sc);
         }
         break;
@@ -81,7 +81,7 @@ public class Client {
         if (isSuccess) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----your token expired please authenticate again-----\n");
+          System.out.println("----Operation could not be executed please authenticate-----\n");
           inputToken = getToken(sc);
         }
         break;
@@ -90,7 +90,7 @@ public class Client {
         if (isSuccess) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----your token expired please authenticate again-----\n");
+          System.out.println("----Operation could not be executed please authenticate-----\n");
           inputToken = getToken(sc);
         }
         break;
@@ -99,7 +99,7 @@ public class Client {
         if (isSuccess) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----your token expired please authenticate again-----\n");
+          System.out.println("----Operation could not be executed please authenticate-----\n");
           inputToken = getToken(sc);
         }
         break;
@@ -108,7 +108,7 @@ public class Client {
         if (isSuccess) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----your token expired please authenticate again-----\n");
+          System.out.println("----Operation could not be executed please authenticate-----\n");
           inputToken = getToken(sc);
         }
         break;
@@ -117,7 +117,7 @@ public class Client {
         if (isSuccess) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----your token expired please authenticate again-----\n");
+         System.out.println("----Operation could not be executed please authenticate-----\n");
           inputToken = getToken(sc);
         }
         break;
@@ -126,7 +126,7 @@ public class Client {
         if (isSuccess) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----your token expired please authenticate again-----\n");
+          System.out.println("----Operation could not be executed please authenticate-----\n");
           inputToken = getToken(sc);
         }
         break;
