@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.UUID;
 
 public class CreateUsers {
     public static String getSecurePassword(String password
@@ -14,7 +13,6 @@ public class CreateUsers {
         String generatedPassword = null;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
-            // md.update(salt);
             byte[] bytes = md.digest(password.getBytes());
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < bytes.length; i++) {

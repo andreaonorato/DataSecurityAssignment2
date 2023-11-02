@@ -9,7 +9,7 @@ Followinf are the steps to run this project in local environment
 install latest version of jdk
 
 ## Step 2
-install Mysql workbench and database and add user: "root" and password: "94NkIBdasNKtyO0"
+install Mysql workbench and database and add user: "root" and password: "94NkIBdasNKtyO0" and create a table with name "users" a.Create columns in table named :(username, password,token, sr_no) . and manually insert values for password and  username columns
 
 ## Step 3
 Run CreateUser.java class file to add user to the database (please change the username each time you run this file in function main() as username is assued to be unique for each user )
