@@ -35,11 +35,11 @@ public class CreateUsers {
     }
 
     public static void main(String[] args) throws NoSuchAlgorithmException, SQLException {
-        String password = getSecurePassword("HellowCrikField123");
+        String password = getSecurePassword("abc8");
         try {
             Connection connection = getConnection();
             Statement statement = connection.createStatement();
-            statement.execute("insert into users (username, password) values('user1','"
+            statement.execute("insert into users (username, password) values('Ida','"
                     + password + "')");
             connection.close();
         } catch (Exception e) {
