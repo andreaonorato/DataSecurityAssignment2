@@ -1,0 +1,5 @@
+manager, connectAuth, printFile, printQueue, topQueue, start, stop, restart, status, readConfig, setConfig,
+technician, start, stop, restart, readConfig, setConfig,
+power user, printQueue, topQueue, restart,
+user, printFile, printQueue,
+

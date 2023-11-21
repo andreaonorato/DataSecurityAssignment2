@@ -1,0 +1,9 @@
+Alice, manager,active
+Bob, technician,inactive
+Cecilia, power user,active
+David, user,active
+Erica, user,active
+Fred, user,active
+George, technician,active
+Henry,user,active
+Ida,user,active

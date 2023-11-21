@@ -1,0 +1,9 @@
+Alice, connectAuth, printFile, printQueue, topQueue, start, stop, restart, status, readConfig, setConfig,active
+Bob, start, stop, restart, readConfig, setConfig,inactive
+Cecilia, printQueue, topQueue, restart,active
+David, printFile, printQueue,active
+Erica, printFile, printQueue,active
+Fred, printFile, printQueue,active
+George, start, stop, restart, readConfig, setConfig,active
+Henry,printFile, printQueue,active,active
+Ida,printFile, printQueue,active,active
