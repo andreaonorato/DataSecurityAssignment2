@@ -58,7 +58,7 @@ public class Client {
         if (isSuccess) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----Operation could not be executed please authenticate-----\n");
+          System.out.println("----Operation could not be executed-----\n");
           inputToken = getToken(sc);
         }
         break;
@@ -67,7 +67,7 @@ public class Client {
         if (isSuccess) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----Operation could not be executed please authenticate-----\n");
+          System.out.println("----Operation could not be executed-----\n");
           inputToken = getToken(sc);
         }
         break;
@@ -76,7 +76,7 @@ public class Client {
         if (isSuccess) {
           System.out.println("----Operation executed---\n");
         } else {
-         System.out.println("----Operation could not be executed please authenticate-----\n");
+         System.out.println("----Operation could not be executed-----\n");
           inputToken = getToken(sc);
         }
         break;
@@ -85,7 +85,7 @@ public class Client {
         if (isSuccess) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----Operation could not be executed please authenticate-----\n");
+          System.out.println("----Operation could not be executed-----\n");
           inputToken = getToken(sc);
         }
         break;
@@ -94,7 +94,7 @@ public class Client {
         if (isSuccess) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----Operation could not be executed please authenticate-----\n");
+          System.out.println("----Operation could not be executed-----\n");
           inputToken = getToken(sc);
         }
         break;
@@ -103,7 +103,7 @@ public class Client {
         if (isSuccess) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----Operation could not be executed please authenticate-----\n");
+          System.out.println("----Operation could not be executed-----\n");
           inputToken = getToken(sc);
         }
         break;
@@ -112,7 +112,7 @@ public class Client {
         if (isSuccess) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----Operation could not be executed please authenticate-----\n");
+          System.out.println("----Operation could not be executed-----\n");
           inputToken = getToken(sc);
         }
         break;
@@ -121,7 +121,7 @@ public class Client {
         if (isSuccess) {
           System.out.println("----Operation executed---\n");
         } else {
-         System.out.println("----Operation could not be executed please authenticate-----\n");
+         System.out.println("----Operation could not be executed-----\n");
           inputToken = getToken(sc);
         }
         break;
@@ -130,7 +130,7 @@ public class Client {
         if (isSuccess) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----Operation could not be executed please authenticate-----\n");
+          System.out.println("----Operation could not be executed-----\n");
           inputToken = getToken(sc);
         }
         break;
