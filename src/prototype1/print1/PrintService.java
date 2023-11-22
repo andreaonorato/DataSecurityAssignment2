@@ -200,7 +200,7 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
     }
 
     private boolean isMethodAllowed(String username, String method) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("src\\data\\Acl.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src\\prototype1\\data1\\Acl.txt"))) {
             String line;
 
             while ((line = reader.readLine()) != null) {
