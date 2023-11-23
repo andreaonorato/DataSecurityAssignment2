@@ -203,10 +203,12 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
             String line;
             String role = getRole(username);
             boolean isActive = isActiveEmployee(username);
-            System.out.println(role);
             while ((line = reader.readLine()) != null) {
                 // Process each line as needed
-                if (line.contains(role) && line.contains(method)&&isActive)
+                String[] data = line.split(",");
+                String[] methods = line.split(",", 2);
+
+                if (data[0].trim().equals(role) && methods[1].contains(method) && isActive)
                     return true;
             }
         } catch (IOException e) {
@@ -222,8 +224,9 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
 
             while ((line = reader.readLine()) != null) {
                 // Process each line as needed
-                if (line.contains(username))
-                    return line.split(",")[1].trim();
+                String[] data = line.split(",");
+                if (data[0].trim().equals(username))
+                    return data[1].trim();
             }
         } catch (IOException e) {
             // Handle exceptions, such as file not found or unable to read
@@ -238,7 +241,8 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
 
             while ((line = reader.readLine()) != null) {
                 // Process each line as needed
-                if (line.contains(username) && line.contains("active"))
+                String[] data = line.split(",");
+                if (data[0].trim().equals(username) && data[2].trim().equals("active"))
                     return true;
             }
         } catch (IOException e) {

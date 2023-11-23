@@ -11,7 +11,6 @@ import java.rmi.server.UnicastRemoteObject;
 
 import prototype1.auth1.AuthServiceI;
 
-
 public class PrintService extends UnicastRemoteObject implements PrintServiceI {
     public PrintService() throws RemoteException {
         super();
@@ -205,7 +204,10 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
 
             while ((line = reader.readLine()) != null) {
                 // Process each line as needed
-                if (line.contains(username) && line.contains(method)&&line.contains("active"))
+                String[] data = line.split(",");
+                String[] methods = line.split(",", 2);
+                String status = line.substring(line.lastIndexOf(",") + 1, line.length());
+                if (data[0].trim().equals(username) && methods[1].contains(method) && status.trim().equals("active"))
                     return true;
             }
         } catch (IOException e) {
