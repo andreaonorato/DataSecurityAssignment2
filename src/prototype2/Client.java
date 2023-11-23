@@ -50,86 +50,86 @@ public class Client {
     Scanner sc = new Scanner(System.in);
     String inputToken = token;
     PrintServiceI service = (PrintServiceI) Naming.lookup("rmi://localhost:5099/printer");
-    boolean isSuccess = false;
+    String result;
     switch (choice) {
       case 1:
-        isSuccess = service.printFile("abc.txt", "printer_1", token);
-        if (isSuccess) {
+        result = service.printFile("abc.txt", "printer_1", token);
+        if (result.trim().equals("Success")) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----Operation could not be executed-----\n");
+          System.out.println("----"+result+"-----\n");
           inputToken = getToken(sc);
         }
         break;
       case 2:
-        isSuccess = service.printQueue("printer_1", token);
-        if (isSuccess) {
+        result = service.printQueue("printer_1", token);
+        if (result.trim().equals("Success")) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----Operation could not be executed-----\n");
+          System.out.println("----"+result+"-----\n");
           inputToken = getToken(sc);
         }
         break;
       case 3:
-        isSuccess = service.topQueue("printer_1", 1, token);
-        if (isSuccess) {
+        result = service.topQueue("printer_1", 1, token);
+        if (result.trim().equals("Success")) {
           System.out.println("----Operation executed---\n");
         } else {
-         System.out.println("----Operation could not be executed-----\n");
+         System.out.println("----"+result+"-----\n");
           inputToken = getToken(sc);
         }
         break;
       case 4:
-        isSuccess = service.start(token);
-        if (isSuccess) {
+        result = service.start(token);
+        if (result.trim().equals("Success")) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----Operation could not be executed-----\n");
+          System.out.println("----"+result+"-----\n");
           inputToken = getToken(sc);
         }
         break;
       case 5:
-        isSuccess = service.stop(token);
-        if (isSuccess) {
+        result = service.stop(token);
+        if (result.trim().equals("Success")) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----Operation could not be executed-----\n");
+          System.out.println("----"+result+"-----\n");
           inputToken = getToken(sc);
         }
         break;
       case 6:
-        isSuccess = service.restart(token);
-        if (isSuccess) {
+        result = service.restart(token);
+        if (result.trim().equals("Success")) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----Operation could not be executed-----\n");
+          System.out.println("----"+result+"-----\n");
           inputToken = getToken(sc);
         }
         break;
       case 7:
-        isSuccess = service.status("printer_1", token);
-        if (isSuccess) {
+        result = service.status("printer_1", token);
+        if (result.trim().equals("Success")) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----Operation could not be executed-----\n");
+          System.out.println("----"+result+"-----\n");
           inputToken = getToken(sc);
         }
         break;
       case 8:
-        isSuccess = service.readConfig("page-size", token);
-        if (isSuccess) {
+        result = service.readConfig("page-size", token);
+        if (result.trim().equals("Success")) {
           System.out.println("----Operation executed---\n");
         } else {
-         System.out.println("----Operation could not be executed-----\n");
+        System.out.println("----"+result+"-----\n");
           inputToken = getToken(sc);
         }
         break;
       case 9:
-        isSuccess = service.setConfig("pages", "4", token);
-        if (isSuccess) {
+        result = service.setConfig("pages", "4", token);
+        if (result.trim().equals("Success")) {
           System.out.println("----Operation executed---\n");
         } else {
-          System.out.println("----Operation could not be executed-----\n");
+          System.out.println("----"+result+"-----\n");
           inputToken = getToken(sc);
         }
         break;
