@@ -107,9 +107,9 @@ public class ClientAdmin {
             throws NotBoundException, MalformedURLException, RemoteException {
         Scanner sc = new Scanner(System.in);
         System.out.println(
-                "1. Set user status\n2. Change user role\n3. Add method to role acess\n4. Remove method from role ");
+                "1. Set user status\n2. Change user role\n3. Add method to role access\n4. Remove method from role\n5. exit ");
         int choice = sc.nextInt();
-        if (token.length() > 0 && choice != 4) {
+        if (token.length() > 0 && choice != 5) {
             executePrintService(choice, token);
         }
         sc.close();

@@ -5,6 +5,6 @@ David, printFile, printQueue,active
 Erica, printFile, printQueue,active
 Fred, printFile, printQueue,active
 George, start, stop, restart, readConfig, setConfig,active
-Henry,printFile, printQueue,active,active
-Ida,printFile, printQueue,active,active
+Henry,printFile, printQueue,active
+Ida    ,printFile, printQueue,active
 Jack,setUserStatus,giveUserResource,removeUserResource,active

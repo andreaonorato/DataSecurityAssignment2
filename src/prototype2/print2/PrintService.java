@@ -23,6 +23,7 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
         AuthServiceI auth = (AuthServiceI) Naming.lookup("rmi://localhost:5098/Auth");
         return auth;
     }
+
     @Override
     public String printFile(String filename, String printer, String token) throws RemoteException {
 
@@ -34,10 +35,9 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
             if (isValid && isAlllowed) {
                 System.out.println("file name: " + filename + " printer: " + printer);
                 return "Success";
-            }else if( isAlllowed == false)
-            {
+            } else if (isAlllowed == false) {
                 return "Operation not allowed";
-            }else if(isValid == false){
+            } else if (isValid == false) {
                 return "User authentication failed";
             }
 
@@ -59,10 +59,9 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
             if (isValid && isAlllowed) {
                 System.out.println("print queue:\n1  abc.pdf\n2  def.pdf\n3  demo.txt");
                 return "Success";
-            }else if( isAlllowed == false)
-            {
+            } else if (isAlllowed == false) {
                 return "Operation not allowed";
-            }else if(isValid == false){
+            } else if (isValid == false) {
                 return "User authentication failed";
             }
 
@@ -84,10 +83,9 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
             if (isValid && isAlllowed) {
                 System.out.println("Job: " + job + " moved to top of the queue for printer: " + printer);
                 return "Success";
-            }else if( isAlllowed == false)
-            {
+            } else if (isAlllowed == false) {
                 return "Operation not allowed";
-            }else if(isValid == false){
+            } else if (isValid == false) {
                 return "User authentication failed";
             }
 
@@ -109,17 +107,16 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
             if (isValid && isAlllowed) {
                 System.out.println("print server started");
                 return "Success";
-            }else if( isAlllowed == false)
-            {
+            } else if (isAlllowed == false) {
                 return "Operation not allowed";
-            }else if(isValid == false){
+            } else if (isValid == false) {
                 return "User authentication failed";
             }
 
         } catch (Exception e) {
             System.out.println(e);
         }
-       return "Operation cannot be executed";
+        return "Operation cannot be executed";
 
     }
 
@@ -134,10 +131,9 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
             if (isValid && isAlllowed) {
                 System.out.println("print server stopped");
                 return "Success";
-            }else if( isAlllowed == false)
-            {
+            } else if (isAlllowed == false) {
                 return "Operation not allowed";
-            }else if(isValid == false){
+            } else if (isValid == false) {
                 return "User authentication failed";
             }
 
@@ -158,17 +154,16 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
             if (isValid && isAlllowed) {
                 System.out.println("print server restarted");
                 return "Success";
-            }else if( isAlllowed == false)
-            {
+            } else if (isAlllowed == false) {
                 return "Operation not allowed";
-            }else if(isValid == false){
+            } else if (isValid == false) {
                 return "User authentication failed";
             }
 
         } catch (Exception e) {
             System.out.println(e);
         }
-       return "Operation cannot be executed";
+        return "Operation cannot be executed";
 
     }
 
@@ -182,10 +177,9 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
             if (isValid && isAlllowed) {
                 System.out.println(printer + " status: printing...");
                 return "Success";
-            }else if( isAlllowed == false)
-            {
+            } else if (isAlllowed == false) {
                 return "Operation not allowed";
-            }else if(isValid == false){
+            } else if (isValid == false) {
                 return "User authentication failed";
             }
 
@@ -206,10 +200,9 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
             if (isValid && isAlllowed) {
                 System.out.println("read parameter: " + parameter);
                 return "Success";
-            }else if( isAlllowed == false)
-            {
+            } else if (isAlllowed == false) {
                 return "Operation not allowed";
-            }else if(isValid == false){
+            } else if (isValid == false) {
                 return "User authentication failed";
             }
 
@@ -230,10 +223,9 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
             if (isValid && isAlllowed) {
                 System.out.println("set parameter " + parameter + " with value " + value);
                 return "Success";
-            }else if( isAlllowed == false)
-            {
+            } else if (isAlllowed == false) {
                 return "Operation not allowed";
-            }else if(isValid == false){
+            } else if (isValid == false) {
                 return "User authentication failed";
             }
 
@@ -243,9 +235,10 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
         return "Operation cannot be executed";
 
     }
-        @Override
+
+    @Override
     public String setUserStatus(String token, String username, String status) throws RemoteException {
-         try (BufferedReader reader = new BufferedReader(new FileReader("src\\prototype2\\data2\\Rbac.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src\\prototype2\\data2\\Rbac.txt"))) {
             AuthServiceI auth = connectAuth();
             boolean isValid = auth.validateToken(token);
             String user = auth.getUsername(token);
@@ -260,20 +253,15 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
                     if (data[0].trim().equals(username)) {
                         line = line.replace(currentStatus, status);
                         content.append(line).append("\n");
-                        try (BufferedWriter writer = new BufferedWriter(
-                                new FileWriter("src\\prototype2\\data2\\Rbac.txt"))) {
-                            writer.write(content.toString());
-                        }
 
                     } else {
                         content.append(line).append("\n");
-                        try (BufferedWriter writer = new BufferedWriter(
-                                new FileWriter("src\\\\prototype2\\\\data2\\\\Rbac.txt"))) {
-                            writer.write(content.toString());
-                        }
-                        System.out.println(content);
                     }
 
+                }
+                try (BufferedWriter writer = new BufferedWriter(
+                        new FileWriter("src\\prototype2\\data2\\Rbac.txt"))) {
+                    writer.write(content.toString());
                 }
                 return "Success";
 
@@ -292,34 +280,28 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
 
     @Override
     public String changeUserRole(String token, String username, String role) throws RemoteException {
-         try (BufferedReader reader = new BufferedReader(new FileReader("src\\prototype2\\data2\\Rbac.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src\\prototype2\\data2\\Rbac.txt"))) {
             AuthServiceI auth = connectAuth();
             boolean isValid = auth.validateToken(token);
             String user = auth.getUsername(token);
             boolean isAlllowed = isMethodAllowed(user, "setUserStatus");
-            System.out.println(isValid + "" + isAlllowed);
             StringBuilder content = new StringBuilder();
             String line;
             if (isValid && isAlllowed) {
                 while ((line = reader.readLine()) != null) {
                     String[] data = line.split(",");
                     if (data[0].trim().equals(username)) {
-                        line = data[0]+role+data[2];
+                        line = data[0] +","+ role+"," + data[2];
                         content.append(line).append("\n");
-                        try (BufferedWriter writer = new BufferedWriter(
-                                new FileWriter("src\\prototype2\\data2\\Rbac.txt"))) {
-                            writer.write(content.toString());                     
-                        }
 
                     } else {
                         content.append(line).append("\n");
-                        try (BufferedWriter writer = new BufferedWriter(
-                                new FileWriter("src\\\\prototype2\\\\data2\\\\Rbac.txt"))) {
-                            writer.write(content.toString());
-                        }
-                        
                     }
 
+                }
+                try (BufferedWriter writer = new BufferedWriter(
+                        new FileWriter("src\\prototype2\\data2\\Rbac.txt"))) {
+                    writer.write(content.toString());
                 }
                 return "Success";
 
@@ -338,34 +320,30 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
 
     @Override
     public String addMethodToRole(String token, String role, String method) throws RemoteException {
-         try (BufferedReader reader = new BufferedReader(new FileReader("src\\\\prototype2\\\\data2\\\\Role_heirarchy.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src\\prototype2\\data2\\Role_heirarchy.txt"))) {
             AuthServiceI auth = connectAuth();
             boolean isValid = auth.validateToken(token);
             String user = auth.getUsername(token);
-            boolean isAlllowed = isMethodAllowed(user, "setUserStatus");
-            System.out.println(isValid + "" + isAlllowed);
+            boolean isAlllowed = isMethodAllowed(user, "addMethodToRole");
             StringBuilder content = new StringBuilder();
             String line;
             if (isValid && isAlllowed) {
                 while ((line = reader.readLine()) != null) {
-                    String[] data = line.split(",",2);
-                    if (data[0].trim().equals(role)) {
-                        line = data[0]+data[1]+","+method;
+                    String[] data = line.split(",", 2);
+                    if (data[0].trim().equals(role) && !data[1].contains(method)) {
+                        line = data[0] + ","+data[1] +","+ method;
                         content.append(line).append("\n");
-                        try (BufferedWriter writer = new BufferedWriter(
-                                new FileWriter("src\\prototype2\\data2\\Rbac.txt"))) {
-                            writer.write(content.toString());                     
-                        }
 
                     } else {
                         content.append(line).append("\n");
-                        try (BufferedWriter writer = new BufferedWriter(
-                                new FileWriter("src\\\\prototype2\\\\data2\\\\Rbac.txt"))) {
-                            writer.write(content.toString());
-                        }
-                        
+
                     }
 
+                }
+                
+                try (BufferedWriter writer = new BufferedWriter(
+                        new FileWriter("src\\prototype2\\data2\\Role_heirarchy.txt"))) {
+                    writer.write(content.toString());
                 }
                 return "Success";
 
@@ -384,35 +362,29 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
 
     @Override
     public String RemoveMethodFromRole(String token, String role, String method) throws RemoteException {
-         try (BufferedReader reader = new BufferedReader(new FileReader("src\\\\prototype2\\\\data2\\\\Role_heirarchy.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src\\prototype2\\data2\\Role_heirarchy.txt"))) {
             AuthServiceI auth = connectAuth();
             boolean isValid = auth.validateToken(token);
             String user = auth.getUsername(token);
-            boolean isAlllowed = isMethodAllowed(user, "setUserStatus");
-            System.out.println(isValid + "" + isAlllowed);
+            boolean isAlllowed = isMethodAllowed(user, "RemoveMethodFromRole");
             StringBuilder content = new StringBuilder();
             String line;
             if (isValid && isAlllowed) {
                 while ((line = reader.readLine()) != null) {
-                    String[] data = line.split(",",2);
+                    String[] data = line.split(",", 2);
                     if (data[0].trim().equals(role)) {
-                        data[1] = data[1].replace(method+",","")
-                        line = data[0]+data[1];
+                        data[1] = data[1].replace(","+method, "");
+                        line = data[0] +","+data[1];
                         content.append(line).append("\n");
-                        try (BufferedWriter writer = new BufferedWriter(
-                                new FileWriter("src\\prototype2\\data2\\Rbac.txt"))) {
-                            writer.write(content.toString());                     
-                        }
 
                     } else {
                         content.append(line).append("\n");
-                        try (BufferedWriter writer = new BufferedWriter(
-                                new FileWriter("src\\\\prototype2\\\\data2\\\\Rbac.txt"))) {
-                            writer.write(content.toString());
-                        }
-                        
                     }
 
+                }
+                try (BufferedWriter writer = new BufferedWriter(
+                        new FileWriter("src\\prototype2\\data2\\Role_heirarchy.txt"))) {
+                    writer.write(content.toString());
                 }
                 return "Success";
 
@@ -482,7 +454,5 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
         }
         return false;
     }
-
-
 
 }

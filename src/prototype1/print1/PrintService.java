@@ -243,7 +243,6 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
             boolean isValid = auth.validateToken(token);
             String user = auth.getUsername(token);
             boolean isAlllowed = isMethodAllowed(user, "setUserStatus");
-            System.out.println(isValid + "" + isAlllowed);
             StringBuilder content = new StringBuilder();
             String line;
             if (isValid && isAlllowed) {
@@ -253,20 +252,19 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
                     if (data[0].trim().equals(username)) {
                         line = line.replace(currentStatus, status);
                         content.append(line).append("\n");
-                        try (BufferedWriter writer = new BufferedWriter(
-                                new FileWriter("src\\prototype1\\data1\\Acl.txt"))) {
-                            writer.write(content.toString());
-                        }
 
                     } else {
                         content.append(line).append("\n");
-                        try (BufferedWriter writer = new BufferedWriter(
-                                new FileWriter("src\\prototype1\\data1\\Acl.txt"))) {
-                            writer.write(content.toString());
-                        }
+
                     }
 
                 }
+                try (BufferedWriter writer = new BufferedWriter(
+                        new FileWriter("src\\prototype1\\data1\\Acl.txt"))) {
+                    writer.write(content.toString());
+                    writer.close();
+                }
+
                 return "Success";
 
             }
@@ -289,7 +287,7 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
             AuthServiceI auth = connectAuth();
             boolean isValid = auth.validateToken(token);
             String user = auth.getUsername(token);
-            boolean isAlllowed = isMethodAllowed(user, "removeUserResource");
+            boolean isAlllowed = isMethodAllowed(user, "giveUserResource");
             StringBuilder content = new StringBuilder();
             String line;
             if (isValid && isAlllowed) {
@@ -305,23 +303,15 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
                                     + line.substring(startIndex + 1, endIndex);
                         }
                         content.append(line).append("\n");
-                        System.out.println(content);
 
-                        try (BufferedWriter writer = new BufferedWriter(
-                                new FileWriter("src\\prototype1\\data1\\Acl.txt"))) {
-                            writer.write(content.toString());
-                        }
-
+                    } else {
+                        content.append(line).append("\n");
                     }
+                }
 
-                    else {
-                    content.append(line).append("\n");
-                    try (BufferedWriter writer = new BufferedWriter(
-                    new FileWriter("src\\prototype1\\data1\\Acl.txt"))) {
+                try (BufferedWriter writer = new BufferedWriter(
+                        new FileWriter("src\\prototype1\\data1\\Acl.txt"))) {
                     writer.write(content.toString());
-                    }
-
-                    }
                 }
                 return "Success";
             }
@@ -331,6 +321,7 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
             if (isValid == false) {
                 return "User authentication failed";
             }
+
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -356,19 +347,15 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
                         line = methods[0] + " ," + methods[1];
                         content.append(line).append("\n");
 
-                        try (BufferedWriter writer = new BufferedWriter(
-                                new FileWriter("src\\prototype1\\data1\\Acl.txt"))) {
-                            writer.write(content.toString());
-                        }
-
                     } else {
                         content.append(line).append("\n");
-                        try (BufferedWriter writer = new BufferedWriter(
-                                new FileWriter("src\\prototype1\\data1\\Acl.txt"))) {
-                            writer.write(content.toString());
-                        }
+
                     }
 
+                }
+                try (BufferedWriter writer = new BufferedWriter(
+                        new FileWriter("src\\prototype1\\data1\\Acl.txt"))) {
+                    writer.write(content.toString());
                 }
                 return "Success";
             }
