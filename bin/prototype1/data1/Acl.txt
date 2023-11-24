@@ -7,3 +7,4 @@ Fred, printFile, printQueue,active
 George, start, stop, restart, readConfig, setConfig,active
 Henry,printFile, printQueue,active,active
 Ida,printFile, printQueue,active,active
+Jack,setUserStatus,giveUserResource,removeUserResource,active

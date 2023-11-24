@@ -2,4 +2,5 @@ manager, connectAuth, printFile, printQueue, topQueue, start, stop, restart, sta
 technician, start, stop, restart, readConfig, setConfig,
 power user, printQueue, topQueue, restart,
 user, printFile, printQueue,
+admin, setUserStatus,changeUserRole,addMethodToRole,RemoveMethodFromRole
 

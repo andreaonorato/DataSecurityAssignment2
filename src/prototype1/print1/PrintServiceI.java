@@ -27,5 +27,11 @@ public interface PrintServiceI extends Remote {
    public String readConfig(String parameter, String token) throws RemoteException;
    // sets the parameter on the print server to value
    public String setConfig(String parameter, String value, String token) throws RemoteException;
+    // sets if user is an active or inactive employee
+   public String setUserStatus(String token,String username ,String status)throws RemoteException ;
+     // adds access to a method
+   public String giveUserResource(String token,String username, String method)throws RemoteException ;
+    //removes access to a method
+   public String removeUserResource(String token,String username, String method)throws RemoteException ;
     
 }

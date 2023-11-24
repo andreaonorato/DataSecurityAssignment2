@@ -1,7 +1,9 @@
 package prototype2.print2;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -241,6 +243,191 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
         return "Operation cannot be executed";
 
     }
+        @Override
+    public String setUserStatus(String token, String username, String status) throws RemoteException {
+         try (BufferedReader reader = new BufferedReader(new FileReader("src\\prototype2\\data2\\Rbac.txt"))) {
+            AuthServiceI auth = connectAuth();
+            boolean isValid = auth.validateToken(token);
+            String user = auth.getUsername(token);
+            boolean isAlllowed = isMethodAllowed(user, "setUserStatus");
+            System.out.println(isValid + "" + isAlllowed);
+            StringBuilder content = new StringBuilder();
+            String line;
+            if (isValid && isAlllowed) {
+                while ((line = reader.readLine()) != null) {
+                    String[] data = line.split(",");
+                    String currentStatus = line.substring(line.lastIndexOf(",") + 1, line.length());
+                    if (data[0].trim().equals(username)) {
+                        line = line.replace(currentStatus, status);
+                        content.append(line).append("\n");
+                        try (BufferedWriter writer = new BufferedWriter(
+                                new FileWriter("src\\prototype2\\data2\\Rbac.txt"))) {
+                            writer.write(content.toString());
+                        }
+
+                    } else {
+                        content.append(line).append("\n");
+                        try (BufferedWriter writer = new BufferedWriter(
+                                new FileWriter("src\\\\prototype2\\\\data2\\\\Rbac.txt"))) {
+                            writer.write(content.toString());
+                        }
+                        System.out.println(content);
+                    }
+
+                }
+                return "Success";
+
+            }
+            if (isAlllowed == false) {
+                return "Operation not allowed";
+            }
+            if (isValid == false) {
+                return "User authentication failed";
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return "Operation cannot be executed";
+    }
+
+    @Override
+    public String changeUserRole(String token, String username, String role) throws RemoteException {
+         try (BufferedReader reader = new BufferedReader(new FileReader("src\\prototype2\\data2\\Rbac.txt"))) {
+            AuthServiceI auth = connectAuth();
+            boolean isValid = auth.validateToken(token);
+            String user = auth.getUsername(token);
+            boolean isAlllowed = isMethodAllowed(user, "setUserStatus");
+            System.out.println(isValid + "" + isAlllowed);
+            StringBuilder content = new StringBuilder();
+            String line;
+            if (isValid && isAlllowed) {
+                while ((line = reader.readLine()) != null) {
+                    String[] data = line.split(",");
+                    if (data[0].trim().equals(username)) {
+                        line = data[0]+role+data[2];
+                        content.append(line).append("\n");
+                        try (BufferedWriter writer = new BufferedWriter(
+                                new FileWriter("src\\prototype2\\data2\\Rbac.txt"))) {
+                            writer.write(content.toString());                     
+                        }
+
+                    } else {
+                        content.append(line).append("\n");
+                        try (BufferedWriter writer = new BufferedWriter(
+                                new FileWriter("src\\\\prototype2\\\\data2\\\\Rbac.txt"))) {
+                            writer.write(content.toString());
+                        }
+                        
+                    }
+
+                }
+                return "Success";
+
+            }
+            if (isAlllowed == false) {
+                return "Operation not allowed";
+            }
+            if (isValid == false) {
+                return "User authentication failed";
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return "Operation cannot be executed";
+    }
+
+    @Override
+    public String addMethodToRole(String token, String role, String method) throws RemoteException {
+         try (BufferedReader reader = new BufferedReader(new FileReader("src\\\\prototype2\\\\data2\\\\Role_heirarchy.txt"))) {
+            AuthServiceI auth = connectAuth();
+            boolean isValid = auth.validateToken(token);
+            String user = auth.getUsername(token);
+            boolean isAlllowed = isMethodAllowed(user, "setUserStatus");
+            System.out.println(isValid + "" + isAlllowed);
+            StringBuilder content = new StringBuilder();
+            String line;
+            if (isValid && isAlllowed) {
+                while ((line = reader.readLine()) != null) {
+                    String[] data = line.split(",",2);
+                    if (data[0].trim().equals(role)) {
+                        line = data[0]+data[1]+","+method;
+                        content.append(line).append("\n");
+                        try (BufferedWriter writer = new BufferedWriter(
+                                new FileWriter("src\\prototype2\\data2\\Rbac.txt"))) {
+                            writer.write(content.toString());                     
+                        }
+
+                    } else {
+                        content.append(line).append("\n");
+                        try (BufferedWriter writer = new BufferedWriter(
+                                new FileWriter("src\\\\prototype2\\\\data2\\\\Rbac.txt"))) {
+                            writer.write(content.toString());
+                        }
+                        
+                    }
+
+                }
+                return "Success";
+
+            }
+            if (isAlllowed == false) {
+                return "Operation not allowed";
+            }
+            if (isValid == false) {
+                return "User authentication failed";
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return "Operation cannot be executed";
+    }
+
+    @Override
+    public String RemoveMethodFromRole(String token, String role, String method) throws RemoteException {
+         try (BufferedReader reader = new BufferedReader(new FileReader("src\\\\prototype2\\\\data2\\\\Role_heirarchy.txt"))) {
+            AuthServiceI auth = connectAuth();
+            boolean isValid = auth.validateToken(token);
+            String user = auth.getUsername(token);
+            boolean isAlllowed = isMethodAllowed(user, "setUserStatus");
+            System.out.println(isValid + "" + isAlllowed);
+            StringBuilder content = new StringBuilder();
+            String line;
+            if (isValid && isAlllowed) {
+                while ((line = reader.readLine()) != null) {
+                    String[] data = line.split(",",2);
+                    if (data[0].trim().equals(role)) {
+                        data[1] = data[1].replace(method+",","")
+                        line = data[0]+data[1];
+                        content.append(line).append("\n");
+                        try (BufferedWriter writer = new BufferedWriter(
+                                new FileWriter("src\\prototype2\\data2\\Rbac.txt"))) {
+                            writer.write(content.toString());                     
+                        }
+
+                    } else {
+                        content.append(line).append("\n");
+                        try (BufferedWriter writer = new BufferedWriter(
+                                new FileWriter("src\\\\prototype2\\\\data2\\\\Rbac.txt"))) {
+                            writer.write(content.toString());
+                        }
+                        
+                    }
+
+                }
+                return "Success";
+
+            }
+            if (isAlllowed == false) {
+                return "Operation not allowed";
+            }
+            if (isValid == false) {
+                return "User authentication failed";
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return "Operation cannot be executed";
+    }
 
     private boolean isMethodAllowed(String username, String method) {
         try (BufferedReader reader = new BufferedReader(new FileReader("src\\prototype2\\data2\\Role_heirarchy.txt"))) {
@@ -295,5 +482,7 @@ public class PrintService extends UnicastRemoteObject implements PrintServiceI {
         }
         return false;
     }
+
+
 
 }

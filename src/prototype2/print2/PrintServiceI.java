@@ -40,4 +40,14 @@ public interface PrintServiceI extends Remote {
     // sets the parameter on the print server to value
     public String setConfig(String parameter, String value, String token) throws RemoteException;
 
+        // prints the value of the parameter on the print server to the user's display
+    public String setUserStatus(String token,String username,String status) throws RemoteException;
+
+        // prints the value of the parameter on the print server to the user's display
+    public String changeUserRole(String token,String username, String role) throws RemoteException;
+        // prints the value of the parameter on the print server to the user's display
+    public String addMethodToRole(String token, String role,String method) throws RemoteException;
+        // prints the value of the parameter on the print server to the user's display
+    public String RemoveMethodFromRole(String token, String role,String method) throws RemoteException;
+
 }

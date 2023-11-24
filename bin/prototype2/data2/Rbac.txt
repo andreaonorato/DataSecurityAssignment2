@@ -6,4 +6,5 @@ Erica, user,active
 Fred, user,active
 George, technician,active
 Henry,user,active
-Ida,user,active
+Ida,manager,ractive
+Jack,admin,active
